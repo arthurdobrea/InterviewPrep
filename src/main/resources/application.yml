@@ -1,9 +1,14 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/justrandomdata
-    username: root
-    password: admin
+    url: jdbc:mysql://mysqldb:3306/justrandomdata
+#    url: jdbc:mysql://localhost:3306/justrandomdata
+#    username: root
+    username: random
+#    password: admin
+    password: random
     driver-class-name: com.mysql.cj.jdbc.Driver
+#  flyway:
+#    enabled: true
   jpa:
     properties:
       hibernate:

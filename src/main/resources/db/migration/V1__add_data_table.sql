@@ -1,4 +1,4 @@
 CREATE table Data(
-    ID integer primary key,
+    ID integer not null AUTO_INCREMENT PRIMARY KEY,
     NAME varchar(255) unique
 );

@@ -1,6 +1,9 @@
 package com.project.preparation.practice.configuration;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
+import lombok.extern.slf4j.Slf4j;
+import org.flywaydb.core.Flyway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,6 +18,7 @@ import javax.sql.DataSource;
 
 
 @Configuration
+@Slf4j
 public class SessionConfiguration {
 
     @Autowired
@@ -22,6 +26,7 @@ public class SessionConfiguration {
 
     @Bean
     public DataSource dataSource(){
+        log.info("Inside dataSource");
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(environment.getProperty("spring.datasource.url"));
         dataSource.setUsername(environment.getProperty("spring.datasource.username"));
@@ -32,6 +37,7 @@ public class SessionConfiguration {
 
     @Bean
     public LocalSessionFactoryBean sessionFactoryBean() {
+        log.info("Inside sessionFactory bean");
         LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
         localSessionFactoryBean.setDataSource(dataSource());
         localSessionFactoryBean.setPackagesToScan("com.project.preparation.practice.model");
